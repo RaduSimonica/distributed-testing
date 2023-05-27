@@ -1,19 +1,27 @@
 package ro.crownstudio;
 
 
+import ro.crownstudio.config.CmdArgs;
 import ro.crownstudio.engine.tests.TestDistributor;
 import ro.crownstudio.engine.tests.TestReceiver;
 
 public class Main {
 
     public static void main(String[] args) {
-        if (args != null && args.length > 0 && args[0].equals("publisher")) {
+        CmdArgs cmdArgs = new CmdArgs(args);
+
+        if (cmdArgs.isPublisher()) {
+            if (cmdArgs.getSuite() == null || cmdArgs.getSuite().isEmpty()) {
+                throw new RuntimeException("Please provide a suite.");
+            }
+
             TestDistributor distributor = new TestDistributor();
 
-            if (!distributor.distributeTests(args[1])) {
+            if (!distributor.distributeTests(cmdArgs.getSuite())) {
                 System.exit(1);
             }
-        } else {
+
+        } else if (cmdArgs.isWorker()) {
             TestReceiver.waitForTests();
         }
     }

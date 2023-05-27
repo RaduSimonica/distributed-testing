@@ -22,7 +22,7 @@ public class MainConfig {
     private MainConfig() {
         properties = new Properties();
         try {
-            properties.load(this.getClass().getClassLoader().getResourceAsStream("app.properties.local"));
+            properties.load(this.getClass().getClassLoader().getResourceAsStream("app.properties"));
         } catch (IOException e) {
             throw new RuntimeException("Failed to load main properties file", e);
         }

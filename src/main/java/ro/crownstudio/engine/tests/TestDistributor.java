@@ -16,6 +16,9 @@ public class TestDistributor {
 
     public boolean distributeTests(String suiteFileName) {
         try {
+            if (!suiteFileName.endsWith(".xml")) {
+                suiteFileName += ".xml";
+            }
             Parser parser = new Parser(getClass().getClassLoader().getResourceAsStream(suiteFileName));
             for (XmlSuite suite : parser.parse()) {
                 for (XmlSuite tempSuite : splitSuite(suite)) {
