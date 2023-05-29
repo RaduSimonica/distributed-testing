@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Suite">
+    <test name="Test1">
+        <classes>
+            <class name="ro.crownstudio.tests.TestRandomGenerator"/>
+        </classes>
+    </test>
+    <test name="Test2">
+        <classes>
+            <class name="ro.crownstudio.tests.TestRandomGenerator"/>
+        </classes>
+    </test>
+    <test name="Test3">
+        <classes>
+            <class name="ro.crownstudio.tests.TestRandomGenerator"/>
+        </classes>
+    </test>
+    <test name="Test4">
+        <classes>
+            <class name="ro.crownstudio.tests.TestRandomGenerator"/>
+        </classes>
+    </test>
+    <test name="Test5">
+        <classes>
+            <class name="ro.crownstudio.tests.TestRandomGenerator"/>
+        </classes>
+    </test>
+    <test name="Test6">
+        <classes>
+            <class name="ro.crownstudio.tests.TestRandomGenerator"/>
+        </classes>
+    </test>
+    <test name="Test7">
+        <classes>
+            <class name="ro.crownstudio.tests.TestRandomGenerator"/>
+        </classes>
+    </test>
+    <test name="Test8">
+        <classes>
+            <class name="ro.crownstudio.tests.TestRandomGenerator"/>
+        </classes>
+    </test>
+    <test name="Test9">
+        <classes>
+            <class name="ro.crownstudio.tests.TestRandomGenerator"/>
+        </classes>
+    </test>
+    <test name="Test10">
+        <classes>
+            <class name="ro.crownstudio.tests.TestRandomGenerator"/>
+        </classes>
+    </test>
+    <test name="Test11">
+        <classes>
+            <class name="ro.crownstudio.tests.TestRandomGenerator"/>
+        </classes>
+    </test>
+    <test name="Test12">
+        <classes>
+            <class name="ro.crownstudio.tests.TestRandomGenerator"/>
+        </classes>
+    </test>
+    <test name="Test13">
+        <classes>
+            <class name="ro.crownstudio.tests.TestRandomGenerator"/>
+        </classes>
+    </test>
+    <test name="Test14">
+        <classes>
+            <class name="ro.crownstudio.tests.TestRandomGenerator"/>
+        </classes>
+    </test>
+    <test name="Test15">
+        <classes>
+            <class name="ro.crownstudio.tests.TestRandomGenerator"/>
+        </classes>
+    </test>
+    <test name="Test16">
+        <classes>
+            <class name="ro.crownstudio.tests.TestRandomGenerator"/>
+        </classes>
+    </test>
+    <test name="Test17">
+        <classes>
+            <class name="ro.crownstudio.tests.TestRandomGenerator"/>
+        </classes>
+    </test>
+    <test name="Test18">
+        <classes>
+            <class name="ro.crownstudio.tests.TestRandomGenerator"/>
+        </classes>
+    </test>
+    <test name="Test19">
+        <classes>
+            <class name="ro.crownstudio.tests.TestRandomGenerator"/>
+        </classes>
+    </test>
+    <test name="Test20">
+        <classes>
+            <class name="ro.crownstudio.tests.TestRandomGenerator"/>
+        </classes>
+    </test>
+    <test name="Test21">
+        <classes>
+            <class name="ro.crownstudio.tests.TestRandomGenerator"/>
+        </classes>
+    </test>
+    <test name="Test22">
+        <classes>
+            <class name="ro.crownstudio.tests.TestRandomGenerator"/>
+        </classes>
+    </test>
+    <test name="Test23">
+        <classes>
+            <class name="ro.crownstudio.tests.TestRandomGenerator"/>
+        </classes>
+    </test>
+    <test name="Test24">
+        <classes>
+            <class name="ro.crownstudio.tests.TestRandomGenerator"/>
+        </classes>
+    </test>
+    <test name="Test25">
+        <classes>
+            <class name="ro.crownstudio.tests.TestRandomGenerator"/>
+        </classes>
+    </test>
+    <test name="Test26">
+        <classes>
+            <class name="ro.crownstudio.tests.TestRandomGenerator"/>
+        </classes>
+    </test>
+    <test name="Test27">
+        <classes>
+            <class name="ro.crownstudio.tests.TestRandomGenerator"/>
+        </classes>
+    </test>
+    <test name="Test28">
+        <classes>
+            <class name="ro.crownstudio.tests.TestRandomGenerator"/>
+        </classes>
+    </test>
+    <test name="Test29">
+        <classes>
+            <class name="ro.crownstudio.tests.TestRandomGenerator"/>
+        </classes>
+    </test>
+    <test name="Test30">
+        <classes>
+            <class name="ro.crownstudio.tests.TestRandomGenerator"/>
+        </classes>
+    </test>
+    <test name="Test31">
+        <classes>
+            <class name="ro.crownstudio.tests.TestRandomGenerator"/>
+        </classes>
+    </test>
+    <test name="Test32">
+        <classes>
+            <class name="ro.crownstudio.tests.TestRandomGenerator"/>
+        </classes>
+    </test>
+    <test name="Test33">
+        <classes>
+            <class name="ro.crownstudio.tests.TestRandomGenerator"/>
+        </classes>
+    </test>
+    <test name="Test34">
+        <classes>
+            <class name="ro.crownstudio.tests.TestRandomGenerator"/>
+        </classes>
+    </test>
+    <test name="Test35">
+        <classes>
+            <class name="ro.crownstudio.tests.TestRandomGenerator"/>
+        </classes>
+    </test>
+    <test name="Test36">
+        <classes>
+            <class name="ro.crownstudio.tests.TestRandomGenerator"/>
+        </classes>
+    </test>
+    <test name="Test37">
+        <classes>
+            <class name="ro.crownstudio.tests.TestRandomGenerator"/>
+        </classes>
+    </test>
+    <test name="Test38">
+        <classes>
+            <class name="ro.crownstudio.tests.TestRandomGenerator"/>
+        </classes>
+    </test>
+    <test name="Test39">
+        <classes>
+            <class name="ro.crownstudio.tests.TestRandomGenerator"/>
+        </classes>
+    </test>
+    <test name="Test40">
+        <classes>
+            <class name="ro.crownstudio.tests.TestRandomGenerator"/>
+        </classes>
+    </test>
+    <test name="Test41">
+        <classes>
+            <class name="ro.crownstudio.tests.TestRandomGenerator"/>
+        </classes>
+    </test>
+    <test name="Test42">
+        <classes>
+            <class name="ro.crownstudio.tests.TestRandomGenerator"/>
+        </classes>
+    </test>
+    <test name="Test43">
+        <classes>
+            <class name="ro.crownstudio.tests.TestRandomGenerator"/>
+        </classes>
+    </test>
+    <test name="Test44">
+        <classes>
+            <class name="ro.crownstudio.tests.TestRandomGenerator"/>
+        </classes>
+    </test>
+    <test name="Test45">
+        <classes>
+            <class name="ro.crownstudio.tests.TestRandomGenerator"/>
+        </classes>
+    </test>
+    <test name="Test46">
+        <classes>
+            <class name="ro.crownstudio.tests.TestRandomGenerator"/>
+        </classes>
+    </test>
+    <test name="Test47">
+        <classes>
+            <class name="ro.crownstudio.tests.TestRandomGenerator"/>
+        </classes>
+    </test>
+    <test name="Test48">
+        <classes>
+            <class name="ro.crownstudio.tests.TestRandomGenerator"/>
+        </classes>
+    </test>
+    <test name="Test49">
+        <classes>
+            <class name="ro.crownstudio.tests.TestRandomGenerator"/>
+        </classes>
+    </test>
+    <test name="Test50">
+        <classes>
+            <class name="ro.crownstudio.tests.TestRandomGenerator"/>
+        </classes>
+    </test>
+</suite>

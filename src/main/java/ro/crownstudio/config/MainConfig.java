@@ -2,13 +2,10 @@ package ro.crownstudio.config;
 
 import lombok.Getter;
 
-import java.io.IOException;
-import java.util.Properties;
 
 public class MainConfig {
     
     private static MainConfig INSTANCE;
-    private final Properties properties;
 
     @Getter
     private String rabbitHost;
@@ -18,19 +15,10 @@ public class MainConfig {
     private String rabbitPass;
     @Getter
     private String queueRequest;
+    @Getter
+    private String queueReceive;
 
-    private MainConfig() {
-        properties = new Properties();
-        try {
-            properties.load(this.getClass().getClassLoader().getResourceAsStream("app.properties"));
-        } catch (IOException e) {
-            throw new RuntimeException("Failed to load main properties file", e);
-        }
-
-        if (!loadProperties()) {
-            throw new RuntimeException("Failed to get properties from main properties object");
-        }
-    }
+    private MainConfig() {}
     
     public static MainConfig getInstance() {
         if (INSTANCE == null) {
@@ -39,16 +27,31 @@ public class MainConfig {
         return INSTANCE;
     }
 
-    private boolean loadProperties() {
-        try {
-            rabbitHost = properties.getProperty("rabbit.host");
-            rabbitUser = properties.getProperty("rabbit.user");
-            rabbitPass = properties.getProperty("rabbit.pass");
-
-            queueRequest = properties.getProperty("queue.request");
-        } catch (Exception e) {
+    public boolean loadFromCmdArgs(CmdArgs cmdArgs) {
+        // TODO: Add error loggers here.
+        if (cmdArgs.getRabbitHost() == null || cmdArgs.getRabbitUser().isBlank()) {
             return false;
         }
+        if (cmdArgs.getRabbitUser() == null || cmdArgs.getRabbitUser().isBlank()) {
+            return false;
+        }
+        if (cmdArgs.getRabbitPass() == null || cmdArgs.getRabbitPass().isBlank()) {
+            return false;
+        }
+        if (cmdArgs.getRequestQueue() == null || cmdArgs.getRequestQueue().isBlank()) {
+            return false;
+        }
+        if (cmdArgs.getReceiveQueue() == null || cmdArgs.getReceiveQueue().isBlank()) {
+            return false;
+        }
+
+        rabbitHost = cmdArgs.getRabbitHost();
+        rabbitUser = cmdArgs.getRabbitUser();
+        rabbitPass = cmdArgs.getRabbitPass();
+
+        queueRequest = cmdArgs.getRequestQueue();
+        queueReceive = cmdArgs.getReceiveQueue();
+
         return true;
     }
 }
