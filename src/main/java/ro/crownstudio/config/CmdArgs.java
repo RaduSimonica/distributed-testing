@@ -14,14 +14,14 @@ public class CmdArgs {
     @Parameter(names = {"--suite"}, description = "The suite name to run (must be in resources dir)")
     private String suite;
 
-    @Parameter(names = {"--rabbitHost"}, description = "The hostname for RabbitMQ")
+    @Parameter(names = {"--rabbitHost"}, description = "The hostname for RabbitMQ", required = true)
     private String rabbitHost;
-    @Parameter(names = {"--rabbitUser"}, description = "Username for RabbitMQ")
+    @Parameter(names = {"--rabbitUser"}, description = "Username for RabbitMQ", required = true)
     private String rabbitUser;
-    @Parameter(names = {"--rabbitPass"}, description = "Password for RabbitMQ", password = true)
+    @Parameter(names = {"--rabbitPass"}, description = "Password for RabbitMQ", password = true, required = true)
     private String rabbitPass;
 
-    @Parameter(names = {"--requestQueue"}, description = "Request queue for sending the tests")
+    @Parameter(names = {"--requestQueue"}, description = "Request queue for sending the tests", required = true)
     private String requestQueue;
     @Parameter(names = {"--receiveQueue"}, description = "Receive queue for getting back test results")
     private String receiveQueue;

@@ -27,31 +27,12 @@ public class MainConfig {
         return INSTANCE;
     }
 
-    public boolean loadFromCmdArgs(CmdArgs cmdArgs) {
-        // TODO: Add error loggers here.
-        if (cmdArgs.getRabbitHost() == null || cmdArgs.getRabbitUser().isBlank()) {
-            return false;
-        }
-        if (cmdArgs.getRabbitUser() == null || cmdArgs.getRabbitUser().isBlank()) {
-            return false;
-        }
-        if (cmdArgs.getRabbitPass() == null || cmdArgs.getRabbitPass().isBlank()) {
-            return false;
-        }
-        if (cmdArgs.getRequestQueue() == null || cmdArgs.getRequestQueue().isBlank()) {
-            return false;
-        }
-        if (cmdArgs.getReceiveQueue() == null || cmdArgs.getReceiveQueue().isBlank()) {
-            return false;
-        }
-
+    public void loadFromCmdArgs(CmdArgs cmdArgs) {
         rabbitHost = cmdArgs.getRabbitHost();
         rabbitUser = cmdArgs.getRabbitUser();
         rabbitPass = cmdArgs.getRabbitPass();
 
         queueRequest = cmdArgs.getRequestQueue();
         queueReceive = cmdArgs.getReceiveQueue();
-
-        return true;
     }
 }
