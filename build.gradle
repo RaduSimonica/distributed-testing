@@ -3,10 +3,11 @@ plugins {
 }
 
 group 'ro.crownstudio'
-version '1.0-SNAPSHOT'
 
 sourceCompatibility = '1.17'
 targetCompatibility = '1.17'
+project.setArchivesBaseName('distributedTest')
+project.setVersion(null)
 
 repositories {
     mavenCentral()

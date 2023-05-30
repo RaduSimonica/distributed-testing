@@ -11,19 +11,19 @@ public class CmdArgs {
     private boolean isPublisher;
     @Parameter(names = {"-w", "--worker"}, description = "Starts the app as worker")
     private boolean isWorker;
-    @Parameter(names = {"-s", "--suite"}, description = "The suite name to run (must be in resources dir)")
+    @Parameter(names = {"--suite"}, description = "The suite name to run (must be in resources dir)")
     private String suite;
 
-    @Parameter(names = {"-h", "--rabbitHost"}, description = "The hostname for RabbitMQ")
+    @Parameter(names = {"--rabbitHost"}, description = "The hostname for RabbitMQ")
     private String rabbitHost;
-    @Parameter(names = {"-u", "--rabbitUser"}, description = "Username for RabbitMQ")
+    @Parameter(names = {"--rabbitUser"}, description = "Username for RabbitMQ")
     private String rabbitUser;
-    @Parameter(names = {"-p", "--rabbitPass"}, description = "Password for RabbitMQ", password = true)
+    @Parameter(names = {"--rabbitPass"}, description = "Password for RabbitMQ", password = true)
     private String rabbitPass;
 
-    @Parameter(names = {"-t", "--requestQueue"}, description = "Request queue for sending the tests")
+    @Parameter(names = {"--requestQueue"}, description = "Request queue for sending the tests")
     private String requestQueue;
-    @Parameter(names = {"-r", "--receiveQueue"}, description = "Receive queue for getting back test results")
+    @Parameter(names = {"--receiveQueue"}, description = "Receive queue for getting back test results")
     private String receiveQueue;
 
     public CmdArgs(String[] args) {
