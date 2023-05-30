@@ -1,4 +1,3 @@
 FROM gradle:jdk17
-ADD . /test-distributor
+ADD ./build/libs/distributedTest.jar /test-distributor/distributedTest.jar
 WORKDIR /test-distributor
-RUN gradle fatJar
