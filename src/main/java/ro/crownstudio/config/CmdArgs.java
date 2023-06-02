@@ -16,9 +16,9 @@ public class CmdArgs {
 
     @Parameter(names = {"--rabbitHost"}, description = "The hostname for RabbitMQ", required = true)
     private String rabbitHost;
-    @Parameter(names = {"--rabbitUser"}, description = "Username for RabbitMQ", required = true)
+    @Parameter(names = {"--rabbitUser"}, description = "Username for RabbitMQ")
     private String rabbitUser;
-    @Parameter(names = {"--rabbitPass"}, description = "Password for RabbitMQ", password = true, required = true)
+    @Parameter(names = {"--rabbitPass"}, description = "Password for RabbitMQ", password = true)
     private String rabbitPass;
 
     @Parameter(names = {"--requestQueue"}, description = "Request queue for sending the tests", required = true)
