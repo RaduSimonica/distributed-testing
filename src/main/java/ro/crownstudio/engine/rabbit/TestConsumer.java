@@ -4,6 +4,8 @@ import com.rabbitmq.client.*;
 import org.testng.TestNG;
 import org.testng.xml.Parser;
 import org.testng.xml.XmlSuite;
+import ro.crownstudio.engine.tests.listeners.SuiteListener;
+import ro.crownstudio.engine.tests.listeners.TestListener;
 
 import java.io.ByteArrayInputStream;
 import java.nio.charset.StandardCharsets;
@@ -23,6 +25,9 @@ public class TestConsumer extends DefaultConsumer {
             Parser parser = new Parser(new ByteArrayInputStream(body));
             List<XmlSuite> suites = parser.parseToList();
             testNG.setXmlSuites(suites);
+            testNG.setUseDefaultListeners(false);
+            testNG.addListener(new TestListener());
+            testNG.addListener(new SuiteListener());
             testNG.run();
 
             getChannel().basicAck(envelope.getDeliveryTag(), false);
