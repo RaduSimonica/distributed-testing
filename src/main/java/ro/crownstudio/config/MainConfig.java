@@ -28,10 +28,21 @@ public class MainConfig {
     }
 
     public void loadFromCmdArgs(CmdArgs cmdArgs) {
-        rabbitHost = cmdArgs.getRabbitHost();
-        rabbitUser = cmdArgs.getRabbitUser();
-        rabbitPass = cmdArgs.getRabbitPass();
+        String rabbitUserEnv = System.getenv("RABBITMQ_DEFAULT_USER");
+        String rabbitPassEnv = System.getenv("RABBITMQ_DEFAULT_PASS");
 
+        if (rabbitUserEnv.isBlank() || rabbitPassEnv.isBlank()) {
+            System.out.println(
+                    "Cannot find RabbitMQ user or password in environment variables. Trying to grab from cmd args."
+            );
+            rabbitUser = cmdArgs.getRabbitUser();
+            rabbitPass = cmdArgs.getRabbitPass();
+        } else {
+            rabbitUser = rabbitUserEnv;
+            rabbitPass = rabbitPassEnv;
+        }
+
+        rabbitHost = cmdArgs.getRabbitHost();
         queueRequest = cmdArgs.getRequestQueue();
         queueReceive = cmdArgs.getReceiveQueue();
     }
