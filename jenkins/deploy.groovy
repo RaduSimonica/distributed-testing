@@ -13,7 +13,7 @@ pipeline {
         stage('TODO: Add tests!!!') {
             steps {
                 script {
-                    sh "echo Still no tests? :("
+                    sh "echo Still no tests?"
                 }
             }
         }
