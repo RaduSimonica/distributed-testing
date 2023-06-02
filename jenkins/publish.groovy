@@ -21,7 +21,9 @@ pipeline {
             steps {
                 script {
                     def imageTag = "${env.BRANCH_NAME}".toString() == "master" ? "$BUILD_NUMBER" : "SNAPSHOT_$BUILD_NUMBER"
+                    def latestTag = "${env.BRANCH_NAME}".toString() == "master" ? "latest" : "SNAPSHOT_latest"
                     sh "docker build -t radusimonica/test_distributor:$imageTag ."
+                    sh "docker build -t radusimonica/test_distributor:$latestTag ."
                 }
             }
         }
@@ -32,7 +34,9 @@ pipeline {
                         sh "docker login -u $USERNAME -p $PASSWORD"
 
                         def imageTag = "${env.BRANCH_NAME}".toString() == "master" ? "$BUILD_NUMBER" : "SNAPSHOT_$BUILD_NUMBER"
+                        def latestTag = "${env.BRANCH_NAME}".toString() == "master" ? "latest" : "SNAPSHOT_latest"
                         sh "docker push radusimonica/test_distributor:$imageTag"
+                        sh "docker push radusimonica/test_distributor:$latestTag"
                     }
                 }
             }

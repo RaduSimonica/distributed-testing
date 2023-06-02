@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   test-worker:
-    image: radusimonica/test_distributor:latest
+    image: radusimonica/test_distributor:SNAPSHOT_latest
     command: java -jar /test-distributor/distributedTest.jar --worker --rabbitHost rabbitmq --requestQueue q.request.test
     environment:
       - RABBITMQ_DEFAULT_USER=$RABBITMQ_DEFAULT_USER
