@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  rabbitmq:
+    image: rabbitmq:3.10.23-management-alpine@sha256:54515cba2ee29041b3e453df04bdd3621225b2389eb558efe8a60c28a4723907
+    ports:
+      - "5672:5672"  # RabbitMQ application port
+      - "15672:15672"  # RabbitMQ management plugin port
+    environment:
+      - RABBITMQ_DEFAULT_USER
+      - RABBITMQ_DEFAULT_PASS
+    volumes:
+      - rabbitmq-data:/var/lib/rabbitmq/mnesia
+    networks:
+      - rabbitmq-network
+
+volumes:
+  rabbitmq-data:
+
+networks:
+  rabbitmq-network:
+    driver: overlay
+    external: true
+    attachable: true
