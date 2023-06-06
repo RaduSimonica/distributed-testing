@@ -31,7 +31,7 @@ public class MainConfig {
         String rabbitUserEnv = System.getenv("RABBITMQ_DEFAULT_USER");
         String rabbitPassEnv = System.getenv("RABBITMQ_DEFAULT_PASS");
 
-        if (rabbitUserEnv.isBlank() || rabbitPassEnv.isBlank()) {
+        if (rabbitUserEnv == null || rabbitUserEnv.isBlank() || rabbitPassEnv == null || rabbitPassEnv.isBlank()) {
             System.out.println(
                     "Cannot find RabbitMQ user or password in environment variables. Trying to grab from cmd args."
             );

@@ -1,5 +1,7 @@
 package ro.crownstudio.engine.tests;
 
+import com.google.common.net.MediaType;
+import com.rabbitmq.client.AMQP;
 import org.testng.xml.Parser;
 import org.testng.xml.XmlSuite;
 import org.testng.xml.XmlTest;
@@ -9,6 +11,8 @@ import ro.crownstudio.engine.rabbit.RabbitPublisher;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.UUID;
 
 public class TestDistributor {
 
@@ -22,7 +26,11 @@ public class TestDistributor {
             Parser parser = new Parser(getClass().getClassLoader().getResourceAsStream(suiteFileName));
             for (XmlSuite suite : parser.parse()) {
                 for (XmlSuite tempSuite : splitSuite(suite)) {
-                    RabbitPublisher.publishMessage(tempSuite.toXml(), CONFIG.getQueueRequest());
+                    AMQP.BasicProperties props = new AMQP.BasicProperties().builder()
+                            .contentType("application/xml")
+                            .headers(Map.of("id", UUID.randomUUID().toString()))
+                            .build();
+                    RabbitPublisher.publishMessage(tempSuite.toXml(), props, CONFIG.getQueueRequest());
                 }
             }
         } catch (IOException e) {
