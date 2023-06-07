@@ -1,6 +1,7 @@
 package ro.crownstudio.pojo;
 
-import lombok.*;
+import lombok.Getter;
+import lombok.Setter;
 import ro.crownstudio.enums.Status;
 
 import java.util.Objects;

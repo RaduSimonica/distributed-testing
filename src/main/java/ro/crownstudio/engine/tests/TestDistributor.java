@@ -1,6 +1,8 @@
 package ro.crownstudio.engine.tests;
 
 import com.rabbitmq.client.AMQP;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.testng.xml.Parser;
 import org.testng.xml.XmlSuite;
 import org.testng.xml.XmlTest;
@@ -17,6 +19,8 @@ import java.util.UUID;
 
 public class TestDistributor {
 
+    private final Logger LOGGER = LogManager.getLogger(TestDistributor.class);
+
     private final MainConfig CONFIG = MainConfig.getInstance();
 
     public boolean distributeTests(String suiteFileName) {
@@ -24,22 +28,26 @@ public class TestDistributor {
             if (!suiteFileName.endsWith(".xml")) {
                 suiteFileName += ".xml";
             }
+            LOGGER.info("Distributing tests from suite: " + suiteFileName);
             List<Test> tests = new ArrayList<>();
             Parser parser = new Parser(getClass().getClassLoader().getResourceAsStream(suiteFileName));
             for (XmlSuite suite : parser.parse()) {
                 for (XmlSuite tempSuite : splitSuite(suite)) {
                     Test test = new Test(UUID.randomUUID().toString());
+                    LOGGER.debug("Assigned test with ID: " + test.getId());
                     AMQP.BasicProperties props = new AMQP.BasicProperties().builder()
                             .contentType("application/xml")
                             .headers(Map.of("id", test.getId()))
                             .build();
                     RabbitPublisher.publishMessage(tempSuite.toXml(), props, CONFIG.getQueueRequest());
                     tests.add(test);
+                    LOGGER.debug("Successfully sent test: " + test.getId());
                 }
             }
-
+            LOGGER.info("Sent %s tests on queue.".formatted(tests.size()));
             new ResultsReceiver(tests).waitForConsume();
         } catch (IOException e) {
+            LOGGER.error("Something went wrong while distributing tests.");
             return false;
         }
         return true;
@@ -61,7 +69,6 @@ public class TestDistributor {
             tempTest.setParameters(test.getAllParameters());
 
             suites.add(tempSuite);
-            System.out.println(tempSuite.toXml());
         }
 
         return suites;

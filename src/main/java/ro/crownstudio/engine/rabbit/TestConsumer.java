@@ -1,7 +1,12 @@
 package ro.crownstudio.engine.rabbit;
 
 import com.google.gson.Gson;
-import com.rabbitmq.client.*;
+import com.rabbitmq.client.AMQP;
+import com.rabbitmq.client.Channel;
+import com.rabbitmq.client.DefaultConsumer;
+import com.rabbitmq.client.Envelope;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.testng.TestNG;
 import org.testng.xml.Parser;
 import org.testng.xml.XmlSuite;
@@ -15,6 +20,7 @@ import java.util.List;
 
 public class TestConsumer extends DefaultConsumer {
 
+    private final static Logger LOGGER = LogManager.getLogger(TestConsumer.class);
     private final MainConfig CONFIG = MainConfig.getInstance();
 
     public TestConsumer(Channel channel) {
@@ -24,9 +30,8 @@ public class TestConsumer extends DefaultConsumer {
     @Override
     public void handleDelivery(String consumerTag, Envelope envelope, AMQP.BasicProperties properties, byte[] body) {
         try {
-            System.out.println("Received test ID: " + properties.getHeaders().get("id"));
-
             Test test = new Test(properties.getHeaders().get("id").toString());
+            LOGGER.info("Received test with ID: " + test.getId());
 
             TestNG testNG = new TestNG();
             Parser parser = new Parser(new ByteArrayInputStream(body));
@@ -37,6 +42,7 @@ public class TestConsumer extends DefaultConsumer {
             testNG.addListener(new SuiteListener());
             testNG.run();
 
+            LOGGER.debug("Test run complete for test ID: " + test.getId());
             getChannel().basicAck(envelope.getDeliveryTag(), false);
 
             AMQP.BasicProperties props = new AMQP.BasicProperties().builder()
@@ -45,8 +51,7 @@ public class TestConsumer extends DefaultConsumer {
                     .build();
             RabbitPublisher.publishMessage(new Gson().toJson(test), props, CONFIG.getQueueReceive());
         } catch (Exception e) {
-            e.printStackTrace();
-            System.out.println("ups!");
+            LOGGER.error("Something went wrong while running test", e);
         }
     }
 }
