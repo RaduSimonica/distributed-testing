@@ -3,7 +3,7 @@ version: '3.8'
 services:
   test-worker:
     image: radusimonica/test_distributor:latest
-    command: java -jar /test-distributor/distributedTest.jar --worker --rabbitHost rabbitmq --requestQueue q.request.test --responseQueue q.receive.result
+    command: java -jar /test-distributor/distributedTest.jar --worker --rabbitHost rabbitmq --requestQueue q.request.test --receiveQueue q.receive.result
     environment:
       - RABBITMQ_DEFAULT_USER=$RABBITMQ_DEFAULT_USER
       - RABBITMQ_DEFAULT_PASS=$RABBITMQ_DEFAULT_PASS
