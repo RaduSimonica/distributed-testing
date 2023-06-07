@@ -23,7 +23,7 @@ public class CmdArgs {
 
     @Parameter(names = {"--requestQueue"}, description = "Request queue for sending the tests", required = true)
     private String requestQueue;
-    @Parameter(names = {"--receiveQueue"}, description = "Receive queue for getting back test results")
+    @Parameter(names = {"--receiveQueue"}, description = "Receive queue for getting back test results", required = true)
     private String receiveQueue;
 
     public CmdArgs(String[] args) {

@@ -2,31 +2,34 @@ package ro.crownstudio.engine.tests.listeners;
 
 import org.testng.ITestListener;
 import org.testng.ITestResult;
+import ro.crownstudio.enums.Status;
+import ro.crownstudio.pojo.Test;
 
 public class TestListener implements ITestListener {
 
-    private String id;
+    private final Test test;
 
-    public TestListener(String id) {
-        this.id = id;
+    public TestListener(Test test) {
+        this.test = test;
     }
 
     public void onTestStart(ITestResult result) {
-        System.out.println("Starting test with ID: " + id);
-        // not implemented
+        System.out.println("Starting test with ID: " + test.getId());
+        test.setStatus(Status.RUNNING);
     }
 
     public void onTestSuccess(ITestResult result) {
-        System.out.println("Test success " + id);
-        // not implemented
+        System.out.println("Test success " + test.getId());
+        test.setStatus(Status.PASSED);
     }
 
     public void onTestFailure(ITestResult result) {
-        System.out.println("Test fail " + id);
-        // not implemented
+        System.out.println("Test failed " + test.getId());
+        test.setStatus(Status.FAILED);
     }
 
     public void onTestSkipped(ITestResult result) {
-        // not implemented
+        System.out.println("Test skipped " + test.getId());
+        test.setStatus(Status.SKIPPED);
     }
 }

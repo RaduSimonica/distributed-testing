@@ -10,16 +10,16 @@ public class BaseClass {
 
     @BeforeSuite
     public void setupSuite() {
-        System.out.println("I am in before suite.");
+        // Not yet implemented
     }
 
     @BeforeClass
     public void setupClass() {
-        System.out.println("I am in before class.");
+        // Not yet implemented
     }
 
     @BeforeMethod
     public void setupMethod() {
-        System.out.println("I am in before method.");
+        // Not yet implemented
     }
 }

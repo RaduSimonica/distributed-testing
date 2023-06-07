@@ -1,20 +1,14 @@
-package ro.crownstudio.engine.tests;
+package ro.crownstudio.engine.tests.receivers;
 
-import com.rabbitmq.client.*;
-import ro.crownstudio.config.MainConfig;
+import com.rabbitmq.client.Channel;
+import com.rabbitmq.client.Connection;
+import com.rabbitmq.client.Consumer;
 import ro.crownstudio.engine.rabbit.TestConsumer;
 
-public class TestReceiver {
+public class TestReceiver extends Receiver {
 
-    private final static MainConfig CONFIG = MainConfig.getInstance();
-    private final static int PREFETCH_COUNT = 1;
-
-    public static void waitForTests() {
-        ConnectionFactory factory = new ConnectionFactory();
-        factory.setHost(CONFIG.getRabbitHost());
-        factory.setUsername(CONFIG.getRabbitUser());
-        factory.setPassword(CONFIG.getRabbitPass());
-
+    @Override
+    public void waitForConsume() {
         try (Connection connection = factory.newConnection()) {
             Channel channel = connection.createChannel();
             channel.queueDeclare(CONFIG.getQueueRequest(), false, false, false, null);

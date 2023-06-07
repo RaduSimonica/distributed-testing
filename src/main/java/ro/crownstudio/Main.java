@@ -4,7 +4,7 @@ package ro.crownstudio;
 import ro.crownstudio.config.CmdArgs;
 import ro.crownstudio.config.MainConfig;
 import ro.crownstudio.engine.tests.TestDistributor;
-import ro.crownstudio.engine.tests.TestReceiver;
+import ro.crownstudio.engine.tests.receivers.TestReceiver;
 
 public class Main {
 
@@ -24,7 +24,7 @@ public class Main {
             }
 
         } else if (cmdArgs.isWorker()) {
-            TestReceiver.waitForTests();
+            new TestReceiver().waitForConsume();
         }
     }
 }
